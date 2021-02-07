@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 06, 2021 at 02:10 AM
+-- Generation Time: Feb 07, 2021 at 08:16 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -42,7 +42,8 @@ INSERT INTO `data_barang` (`id`, `kode`, `item_name`, `id_kategori`) VALUES
 (1, 'BK400900', 'CUP COLD 16oz (ea)', 1),
 (2, 'Bk401000', 'CUP COLD 22oz MED', 1),
 (3, 'BK401100', 'COLD LID 16/22 (ea)', 1),
-(4, 'BK401200', 'CUP COLD 12OZ', 1);
+(4, 'BK401200', 'CUP COLD 12OZ', 1),
+(5, 'BK401300', 'LID COLD 12OZ', 1);
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ INSERT INTO `data_siswa` (`id`, `nis`, `nisn`, `nama_siswa`, `tmp_lahir_siswa`, 
 --
 
 CREATE TABLE `data_transaksi` (
-  `id` int(11) NOT NULL,
+  `id_transaksi` int(11) NOT NULL,
   `id_barang` int(11) NOT NULL,
   `cv` int(100) NOT NULL,
   `pack` int(100) NOT NULL,
@@ -107,10 +108,11 @@ CREATE TABLE `data_transaksi` (
 -- Dumping data for table `data_transaksi`
 --
 
-INSERT INTO `data_transaksi` (`id`, `id_barang`, `cv`, `pack`, `ea`, `stok_op_name`, `transfer`, `endmonthly`, `actual`, `date`) VALUES
+INSERT INTO `data_transaksi` (`id_transaksi`, `id_barang`, `cv`, `pack`, `ea`, `stok_op_name`, `transfer`, `endmonthly`, `actual`, `date`) VALUES
 (1, 1, 1, 1, 1, 100, 0, 300, 800, '2021-01-30'),
-(2, 2, 1, 5, 1, 100, 0, 300, 800, '2021-01-28'),
-(3, 3, 1, 1, 1, 100, 0, 300, 800, '2021-01-30');
+(2, 2, 5, 4, 1, 7, 1, 1, 6, '2021-02-07'),
+(3, 0, 0, 0, 0, 0, 0, 0, 0, '2021-02-07'),
+(13, 3, 1, 2, 1, 6, 1, 2, 4, '2021-02-07');
 
 -- --------------------------------------------------------
 
@@ -160,7 +162,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `full_name`, `phone`, `role`, `last_login`, `photo`, `created_at`, `is_active`) VALUES
 (1, 'dian', '$2y$10$TpipIS3PDfeHTJWggvnFO.eT/dVBMyVKI5OcYV1avGMnt8wTqOt5O', 'dian@petanikode.com', 'Ahmad Muhardian', '08123456789', 'admin', '2020-12-26 05:36:56', 'user_no_image.jpg', '2019-12-10 15:46:40', 1),
-(2, 'user', '$2y$10$TpipIS3PDfeHTJWggvnFO.eT/dVBMyVKI5OcYV1avGMnt8wTqOt5O', 'user@email.com', 'Administrator', '08123456789', 'admin', '2021-02-06 00:37:38', 'user_no_image.jpg', '2019-12-10 15:46:40', 1);
+(2, 'user', '$2y$10$TpipIS3PDfeHTJWggvnFO.eT/dVBMyVKI5OcYV1avGMnt8wTqOt5O', 'user@email.com', 'Administrator', '08123456789', 'admin', '2021-02-07 17:38:14', 'user_no_image.jpg', '2019-12-10 15:46:40', 1);
 
 --
 -- Indexes for dumped tables
@@ -184,7 +186,7 @@ ALTER TABLE `data_siswa`
 -- Indexes for table `data_transaksi`
 --
 ALTER TABLE `data_transaksi`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_transaksi`);
 
 --
 -- Indexes for table `kategori_barang`
@@ -206,7 +208,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `data_barang`
 --
 ALTER TABLE `data_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `data_siswa`
@@ -218,7 +220,7 @@ ALTER TABLE `data_siswa`
 -- AUTO_INCREMENT for table `data_transaksi`
 --
 ALTER TABLE `data_transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `kategori_barang`

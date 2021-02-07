@@ -4,6 +4,7 @@ class Barang_model extends CI_Model
 {
     private $_table = "data_barang";
     private $_table2 = "data_transaksi";
+    private $_table3 = "kategori_barang";
 
     public $id;
     public $kode;
@@ -30,7 +31,16 @@ class Barang_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->get($this->_table)->result();
+        $this->db->select('*');
+        $this->db->from('data_barang');
+        $this->db->join('kategori_barang', 'kategori_barang.id = data_barang.id_kategori');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getKategori()
+    {
+        return $this->db->get($this->_table3)->result();
     }
     
     public function getById($id)
@@ -50,6 +60,18 @@ class Barang_model extends CI_Model
         $this->db->join('data_transaksi', 'data_transaksi.id_barang = data_barang.id', 'left');
         $query = $this->db->get();
         return $query->result();
+    }
+
+    public function insert_barang()
+    {   
+        
+        $data = array(
+            'kode' => $this->input->post('kode'),
+            'item_name' => $this->input->post('item_name'),
+            'id_kategori' => $this->input->post('id_kategori'),
+            
+        );
+        return $this->db->insert('data_barang', $data);
     }
 
     public function save()

@@ -28,46 +28,44 @@ class Siswa extends CI_Controller
         $this->load->view("admin/siswa/list", $data);
     }
 
+    public function daily()
+    {
+        $data['data_barang'] = $this->barang_model->getTransaksiOnBarang();
+        $this->load->view("admin/siswa/daily", $data);
+    }
+
     public function weekly()
     {
-        $data["data_barang"] = $this->barang_model->getAll();
-        $this->load->view("admin/siswa/list", $data);
+        $data['data_barang'] = $this->barang_model->getTransaksiOnBarang();
+        $this->load->view("admin/siswa/weekly", $data);
     }
 
-    public function monthly()
+    public function store()
     {
-        $data["data_barang"] = $this->barang_model->getAll();
-        $this->load->view("admin/siswa/list", $data);
+        $products=new Transaksi_model;
+        $products->insert_transaksi();
+        redirect(base_url('admin/siswa'));
     }
 
-    public function add()
+    public function update()
     {
-        $siswa = $this->siswa_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($siswa->rules());
-
-        if ($validation->run()) {
-            $siswa->save();
-            $this->session->set_flashdata('Berhasil disimpan');
-        }
-
-        $this->load->view("admin/siswa/new_form");
+        $products=new Transaksi_model;
+        $products->update();
+        redirect(base_url('admin/siswa'));
     }
 
     public function edit($id = null)
     {
         if (!isset($id)) redirect('admin/siswa');
        
-        $siswa = $this->siswa_model;
+        $siswa = $this->transaksi_model;
         $validation = $this->form_validation;
         $validation->set_rules($siswa->rules());
-
-        if ($validation->run()) {
-            $siswa->update();
-            $this->session->set_flashdata('Berhasil disimpan');
-        }
-
         $data["siswa"] = $siswa->getById($id);
+        $siswa->update();
+        $this->session->set_flashdata('Berhasil disimpan');
+
+        
         if (!$data["siswa"]) show_404();
         
         $this->load->view("admin/siswa/edit_form", $data);

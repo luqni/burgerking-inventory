@@ -59,3 +59,7 @@ $route['contact'] = 'welcome/contact';
 
 // $route['admin'] = 'admin/overview';
 $route['admin'] = 'admin/siswa';
+
+$route['siswaCreate']['post'] = "admin/siswa/store";
+
+$route['siswaUpdate']['put'] = "admin/siswa/update";

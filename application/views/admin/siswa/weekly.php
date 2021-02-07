@@ -24,7 +24,7 @@
 					<div class="card-header">
 					
 					<div class="panel-body">
-						<h4 align="center">MENU <br/> INVENTORY </h4>
+						<h4 align="center">MENU <br/>WEEKLY INVENTORY </h4>
 					</div>
 					<hr>
 						<div class="container">
@@ -46,10 +46,7 @@
 										<th style="text-align:center" rowspan="2">Kode</th>
 										<th style="text-align:center" rowspan="2">Item Name</th>
 										<th style="text-align:center" style="text-align:center" colspan="3">Unit</th>
-										<th style="text-align:center" rowspan="2">Stock of Name</th>
-										<th style="text-align:center" rowspan="2">Transfer</th>
-										<th style="text-align:center" rowspan="2">End Monhtly</th>
-										<th style="text-align:center" rowspan="2">Actual</th>
+										<th style="text-align:center" rowspan="2" >Tanggal</th>
 										<th style="text-align:center" rowspan="2" >Action</th>
 									</tr>
 									<tr>
@@ -81,17 +78,7 @@
 											<?php echo $barang->ea ?>
 										</td>
 										<td style="text-align:center">
-											<?php echo $barang->stok_op_name ?>
-										</td>
-										<td style="text-align:center">
-											<?php echo $barang->transfer ?>
-										</td>
-										<td style="text-align:center">
-											<?php echo $barang->endmonthly ?>
-										</td>
-										
-										<td style="text-align:center">
-											<?php echo $barang->actual ?>
+											<?php echo $barang->date ?>
 										</td>
 										
 										<td style="text-align:center" width="250">

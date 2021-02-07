@@ -16,9 +16,8 @@
             <span>Inventory</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/siswa/add') ?>">New Siswa</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/siswa') ?>">Daily</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/siswa') ?>">Weekly</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/siswa/daily') ?>">Daily</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/siswa/weekly') ?>">Weekly</a>
             <a class="dropdown-item" href="<?php echo site_url('admin/siswa') ?>">Monthly</a>
         </div>
     </li>
@@ -32,6 +31,12 @@
             <a class="dropdown-item" href="<?php echo site_url('admin/products/add') ?>">New Product</a>
             <a class="dropdown-item" href="<?php echo site_url('admin/products') ?>">List Product</a>
         </div>
+    </li>
+    <li class="nav-item <?php echo $this->uri->segment(2) == '' ? 'active': '' ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/barang') ?>">
+            <i class="fas fa-fw fa-boxes"></i>
+            <span>List Barang</span>
+        </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">

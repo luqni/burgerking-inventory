@@ -4,28 +4,28 @@ class Transaksi_model extends CI_Model
 {
     private $_table = "data_transaksi";
 
-    public $id;
+    public $id_transaksi;
     public $cv;
     public $pack;
     public $ea;
     public $stok_op_name;
-    public $tranfer;
+    public $transfer;
     public $endmonthly;
-    public $actul;
+    public $actual;
 
     public function rules()
     {
         return [
-            ['field' => 'name',
-            'label' => 'Name',
+            ['field' => 'cv',
+            'label' => 'cv',
             'rules' => 'required'],
 
-            ['field' => 'price',
-            'label' => 'Price',
+            ['field' => 'pack',
+            'label' => 'Pack',
             'rules' => 'numeric'],
             
-            ['field' => 'description',
-            'label' => 'Description',
+            ['field' => 'ea',
+            'label' => 'EA',
             'rules' => 'required']
         ];
     }
@@ -37,7 +37,7 @@ class Transaksi_model extends CI_Model
     
     public function getById($id)
     {
-        return $this->db->get_where($this->_table, ["product_id" => $id])->row();
+        return $this->db->get_where($this->_table, ["id_transaksi" => $id])->row();
     }
 
     public function getByDay($date)
@@ -45,33 +45,65 @@ class Transaksi_model extends CI_Model
         return $this->db->get_where($this->_table, ["date" => $date])->result();
     }
 
+    public function saveProduct($data){
+        $query = $this->db->table('data_transaksi')->insert($data);
+        return $query;
+    }
+
     public function save()
     {
         $post = $this->input->post();
-        $this->product_id = uniqid();
-        $this->name = $post["name"];
-		$this->price = $post["price"];
-		$this->image = $this->_uploadImage();
-        $this->description = $post["description"];
+        $this->id_transaksi = uniqid();
+        $this->id_barang = $post["id"];
+		$this->cv = $post["cv"];
+		$this->pack = $post["pack"];
+        $this->ea = $post["ea"];
+        $this->date = date("Y-m-d");
         $this->db->insert($this->_table, $this);
+    }
+
+    public function insert_transaksi()
+    {   
+        $stok_op_name =  $this->input->post('stok_op_name');
+        $endmonthly = $this->input->post('endmonthly');
+        $actual = $stok_op_name - $endmonthly;
+        $data = array(
+            'id_barang' => $this->input->post('id_barang'),
+            'cv' => $this->input->post('cv'),
+            'pack' => $this->input->post('pack'),
+            'ea' => $this->input->post('ea'),
+            'stok_op_name' => $this->input->post('stok_op_name'),
+            'endmonthly' => $this->input->post('endmonthly'),
+            'transfer' => $this->input->post('transfer'),
+            'actual' => $actual,
+            'date' => date("Y-m-d"),
+        );
+        return $this->db->insert('data_transaksi', $data);
     }
 
     public function update()
     {
-        $post = $this->input->post();
-        $this->product_id = $post["id"];
-        $this->name = $post["name"];
-		$this->price = $post["price"];
-		
-		
-		if (!empty($_FILES["image"]["name"])) {
-            $this->image = $this->_uploadImage();
-        } else {
-            $this->image = $post["old_image"];
-		}
+        $id =  $this->input->post('id_transaksi');
+        $stok_op_name =  $this->input->post('stok_op_name');
+        $endmonthly = $this->input->post('endmonthly');
+        $actual = $stok_op_name - $endmonthly;
+        $data = array(
+            'id_barang' => $this->input->post('id_barang'),
+            'cv' => $this->input->post('cv'),
+            'pack' => $this->input->post('pack'),
+            'ea' => $this->input->post('ea'),
+            'stok_op_name' => $this->input->post('stok_op_name'),
+            'endmonthly' => $this->input->post('endmonthly'),
+            'transfer' => $this->input->post('transfer'),
+            'actual' => $actual,
+            'date' => date("Y-m-d"),
+        );
 
-        $this->description = $post["description"];
-        $this->db->update($this->_table, $this, array('product_id' => $post['id']));
+        $this->db->where('id_transaksi',$id);
+        return $this->db->update('data_transaksi',$data);
+
+        // $query = $this->db->table('data_transaksi')->update($data, array('id_transaksi' => $id));
+        // return $query;
     }
 
     public function delete($id)

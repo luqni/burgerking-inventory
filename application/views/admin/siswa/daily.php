@@ -134,29 +134,10 @@
                     <label>Item Name</label>
                     <input type="text" class="form-control item_name" name="item_name" placeholder="Product Name" disabled>
                 </div>
-                 
-                <div class="form-group">
-                    <label>CV</label>
-                    <input type="number" id="cv" class="form-control " name="cv" placeholder="Product CV">
-                </div>
 
 				<div class="form-group">
                     <label>Pack</label>
                     <input type="number" id="pack" class="form-control " name="pack" placeholder="Product Pack">
-                </div>
- 
-                
-				<div class="form-group">
-                    <label>Stok Op Name</label>
-                    <input type="number" id="stok_op_name" class="form-control " name="stok_op_name" placeholder="stok op name">
-                </div>
-				<div class="form-group">
-                    <label>EndMonthly</label>
-                    <input type="number" id="endmonthly" class="form-control " name="endmonthly" placeholder="endmonthly">
-                </div>
-				<div class="form-group">
-                    <label>Transfer</label>
-                    <input type="number" id="transfer" class="form-control " name="transfer" placeholder="Transfer">
                 </div>
              
             </div>
@@ -198,26 +179,6 @@
 				<div class="form-group">
                     <label>EA</label>
                     <input type="text" class="form-control ea" name="ea" placeholder="Product Price" disabled>
-                </div>
-
-				<div class="form-group">
-                    <label>Stok Op Name</label>
-                    <input type="text" class="form-control stok-op-name" name="stok_op_name" placeholder="Product Price">
-                </div>
-
-				<div class="form-group">
-                    <label>Transfer</label>
-                    <input type="text" class="form-control transfer" name="transfer" placeholder="Product Price">
-                </div>
-
-				<div class="form-group">
-                    <label>End Monthly</label>
-                    <input type="text" class="form-control endmonthly" name="endmonthly" placeholder="Product Price">
-                </div>
-
-				<div class="form-group">
-                    <label>Actual</label>
-                    <input type="text" class="form-control actual" name="actual" placeholder="Product Price" disabled>
                 </div>
              
             </div>

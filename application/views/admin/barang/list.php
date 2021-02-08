@@ -38,6 +38,7 @@
 										<th style="text-align:center" rowspan="2">No</th>
 										<th style="text-align:center" rowspan="2">Kode</th>
 										<th style="text-align:center" rowspan="2">Item Name</th>
+										<th style="text-align:center" rowspan="2">Isi Pack</th>
 										<th style="text-align:center" rowspan="2">Kategori</th>
 										<th style="text-align:center" rowspan="2" >Action</th>
 									</tr>
@@ -53,6 +54,10 @@
 										</td>
 										<td style="text-align:center">
 											<?php echo $barang->item_name ?>
+										</td>
+
+										<td style="text-align:center">
+											<?php echo $barang->isi_pack ?>
 										</td>
 										
 										<td style="text-align:center">
@@ -107,6 +112,11 @@
                 <div class="form-group">
                     <label>Item Name</label>
                     <input type="text" class="form-control item_name" name="item_name" placeholder="Nama Barang">
+                </div>
+
+				<div class="form-group">
+                    <label>Isi Pack</label>
+                    <input type="number" class="form-control isi_pack" name="isi_pack" placeholder="Isi Pack">
                 </div>
 
 				<div class="form-group">

@@ -25,7 +25,7 @@ class Siswa extends CI_Controller
         // $data["data_barang"] = $this->barang_model->getAll();
         // $data["data_barang"] = $this->barang_model->leftJoin();
         $data['data_barang'] = $this->barang_model->getTransaksiOnBarang();
-        $this->load->view("admin/siswa/list", $data);
+        $this->load->view("admin/siswa/daily", $data);
     }
 
     public function daily()

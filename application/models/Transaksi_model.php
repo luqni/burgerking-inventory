@@ -67,11 +67,13 @@ class Transaksi_model extends CI_Model
         $stok_op_name =  $this->input->post('stok_op_name');
         $endmonthly = $this->input->post('endmonthly');
         $actual = $stok_op_name - $endmonthly;
+        $pack =  $this->input->post('pack');
+        $isi_pack =  $this->input->post('isi_pack');
+        $ea = $pack * $isi_pack;
         $data = array(
             'id_barang' => $this->input->post('id_barang'),
-            'cv' => $this->input->post('cv'),
             'pack' => $this->input->post('pack'),
-            'ea' => $this->input->post('ea'),
+            'ea' => $ea,
             'stok_op_name' => $this->input->post('stok_op_name'),
             'endmonthly' => $this->input->post('endmonthly'),
             'transfer' => $this->input->post('transfer'),
@@ -87,16 +89,18 @@ class Transaksi_model extends CI_Model
         $stok_op_name =  $this->input->post('stok_op_name');
         $endmonthly = $this->input->post('endmonthly');
         $actual = $stok_op_name - $endmonthly;
+        $pack =  $this->input->post('pack');
+        $isi_pack =  $this->input->post('isi_pack');
+        $ea = $pack * $isi_pack;
         $data = array(
             'id_barang' => $this->input->post('id_barang'),
-            'cv' => $this->input->post('cv'),
             'pack' => $this->input->post('pack'),
-            'ea' => $this->input->post('ea'),
+            'ea' => $ea,
             'stok_op_name' => $this->input->post('stok_op_name'),
             'endmonthly' => $this->input->post('endmonthly'),
             'transfer' => $this->input->post('transfer'),
             'actual' => $actual,
-            'date' => date("Y-m-d"),
+            // 'date' => date("Y-m-d"),
         );
 
         $this->db->where('id_transaksi',$id);

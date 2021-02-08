@@ -50,8 +50,8 @@
 										<th style="text-align:center" rowspan="2" >Action</th>
 									</tr>
 									<tr>
-										<th style="text-align:center">CV</th>
 										<th style="text-align:center">Pack</th>
+										<th style="text-align:center">Isi Pack</th>
 										<th style="text-align:center">EA</th>	
 									</tr>
 								</thead>
@@ -67,12 +67,11 @@
 										<td style="text-align:center">
 											<?php echo $barang->item_name ?>
 										</td>
-										
-										<td style="text-align:center">
-											<?php echo $barang->cv ?>
-										</td>
 										<td style="text-align:center">
 											<?php echo $barang->pack ?>
+										</td>
+										<td style="text-align:center">
+											<?php echo $barang->isi_pack ?>
 										</td>
 										<td style="text-align:center">
 											<?php echo $barang->ea ?>
@@ -82,12 +81,12 @@
 										</td>
 										
 										<td style="text-align:center" width="250">
-											<?php if($barang->cv === null){ ?>
+											<?php if($barang->pack === null){ ?>
 											<a href=""
-											 class="btn btn-small text-danger btn-record"  data-id ="<?= $barang->id ?>"  data-name ="<?= $barang->item_name ?>"  data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i> Record</a>
+											 class="btn btn-small text-danger btn-record" data-pack ="<?= $barang->isi_pack ?>"  data-id ="<?= $barang->id ?>"  data-name ="<?= $barang->item_name ?>"  data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i> Record</a>
 											 <?php }else{ ?>
 											<a href="<?php echo site_url('admin/siswa/edit/'.$barang->id_transaksi) ?>"
-											 class="btn btn-small btn-update" data-id2 ="<?= $barang->id ?>" data-id ="<?= $barang->id_transaksi ?>"  data-name ="<?= $barang->item_name ?>" data-cv ="<?= $barang->cv ?>"  data-pack ="<?= $barang->pack ?>" data-ea ="<?= $barang->ea ?>" data-stok ="<?= $barang->stok_op_name ?>" data-transfer ="<?= $barang->transfer ?>" data-endmonthly ="<?= $barang->endmonthly ?>" data-actual ="<?= $barang->actual ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
+											 class="btn btn-small btn-update" data-pack2 ="<?= $barang->isi_pack ?>" data-id2 ="<?= $barang->id ?>" data-id ="<?= $barang->id_transaksi ?>"  data-name ="<?= $barang->item_name ?>" data-cv ="<?= $barang->cv ?>"  data-pack ="<?= $barang->pack ?>" data-ea ="<?= $barang->ea ?>" data-stok ="<?= $barang->stok_op_name ?>" data-transfer ="<?= $barang->transfer ?>" data-endmonthly ="<?= $barang->endmonthly ?>" data-actual ="<?= $barang->actual ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
 											
 										<?php } ?>
 										</td>
@@ -146,10 +145,7 @@
                     <input type="number" id="pack" class="form-control " name="pack" placeholder="Product Pack">
                 </div>
  
-                <div class="form-group">
-                    <label>EA</label>
-                    <input type="number" id="ea" class="form-control " name="ea" placeholder="Product EA">
-                </div>
+                
 				<div class="form-group">
                     <label>Stok Op Name</label>
                     <input type="number" id="stok_op_name" class="form-control " name="stok_op_name" placeholder="stok op name">
@@ -166,6 +162,7 @@
             </div>
             <div class="modal-footer">
 				<input type="hidden" name="id_barang" class="id_barang">
+				<input type="hidden" name="isi_pack" class="isi_pack">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit"  id="btn-submit2" class="btn btn-primary">Record</button>
             </div>
@@ -192,11 +189,6 @@
                     <label>Item Name</label>
                     <input type="text" class="form-control item_name" name="item_name" placeholder="Product Name">
                 </div>
-                 
-                <div class="form-group">
-                    <label>CV</label>
-                    <input type="text" class="form-control cv" name="cv" placeholder="Product Price">
-                </div>
  
                 <div class="form-group">
                     <label>Pack</label>
@@ -205,7 +197,7 @@
 
 				<div class="form-group">
                     <label>EA</label>
-                    <input type="text" class="form-control ea" name="ea" placeholder="Product Price">
+                    <input type="text" class="form-control ea" name="ea" placeholder="Product Price" disabled>
                 </div>
 
 				<div class="form-group">
@@ -232,6 +224,7 @@
             <div class="modal-footer">
 				<input type="hidden" name="id_transaksi" class="id_transaksi">
 				<input type="hidden" name="id_barang" class="id_barang">
+				<input type="hidden" name="isi_pack" class="isi_pack">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Update</button>
             </div>
@@ -263,10 +256,11 @@
 	 // get data from button edit
 	 const id = $(this).data('id');
 	 const name = $(this).data('name');
-	
+	 const isi_pack = $(this).data('pack');
 	 // Set data to Form Edit
 	 $('.item_name').val(name);
 	 $('.id_barang').val(id);
+	 $('.isi_pack').val(isi_pack);
 	 // Call Modal Edit
 	
  	});
@@ -283,6 +277,7 @@
 	 const transfer = $(this).data('transfer');
 	 const endmonthly = $(this).data('endmonthly');
 	 const actual = $(this).data('actual');
+	 const isi_pack = $(this).data('pack2');
 	
 	 // Set data to Form Edit
 	 $('.item_name').val(name);
@@ -295,6 +290,7 @@
 	 $('.transfer').val(transfer);
 	 $('.endmonthly').val(endmonthly);
 	 $('.actual').val(actual);
+	 $('.isi_pack').val(isi_pack);
 	 // Call Modal Edit
 	
  	});

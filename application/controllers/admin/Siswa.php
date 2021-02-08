@@ -41,11 +41,25 @@ class Siswa extends CI_Controller
         redirect(base_url('admin/siswa'));
     }
 
+    public function store_monthly()
+    {
+        $products=new Transaksi_model;
+        $products->insert_transaksi_monthly();
+        redirect(base_url('admin/siswa/monthly'));
+    }
+
     public function update()
     {
         $products=new Transaksi_model;
         $products->update();
         redirect(base_url('admin/siswa'));
+    }
+
+    public function update_monthly()
+    {
+        $products=new Transaksi_model;
+        $products->update_monthly();
+        redirect(base_url('admin/siswa/monthly'));
     }
 
     public function edit($id = null)

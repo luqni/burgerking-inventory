@@ -79,6 +79,23 @@ class Transaksi_model extends CI_Model
         return $this->db->insert('data_transaksi', $data);
     }
 
+    public function insert_transaksi_monthly()
+    {   
+        $stok_op_name =  $this->input->post('stok_op_name');
+        $endmonthly = $this->input->post('endmonthly');
+        $actual = $stok_op_name - $endmonthly;
+        $pack =  $this->input->post('pack');
+        $isi_pack =  $this->input->post('isi_pack');
+        $ea = $pack * $isi_pack;
+        $data = array(
+            'id_barang' => $this->input->post('id_barang'),
+            'pack' => $this->input->post('pack'),
+            'ea' => $ea,
+            'date' => date("Y-m-d"),
+        );
+        return $this->db->insert('data_transaksi_monthly', $data);
+    }
+
     public function update()
     {
         $id =  $this->input->post('id_transaksi');
@@ -94,6 +111,26 @@ class Transaksi_model extends CI_Model
 
         $this->db->where('id_transaksi',$id);
         return $this->db->update('data_transaksi',$data);
+
+        // $query = $this->db->table('data_transaksi')->update($data, array('id_transaksi' => $id));
+        // return $query;
+    }
+
+    public function update_monthly()
+    {
+        $id =  $this->input->post('id_transaksi_monthly');
+        $pack =  $this->input->post('pack');
+        $isi_pack =  $this->input->post('isi_pack');
+        $ea = $pack * $isi_pack;
+        $data = array(
+            'id_barang' => $this->input->post('id_barang'),
+            'pack' => $this->input->post('pack'),
+            'ea' => $ea,
+            // 'date' => date("Y-m-d"),
+        );
+
+        $this->db->where('id_transaksi_monthly',$id);
+        return $this->db->update('data_transaksi_monthly',$data);
 
         // $query = $this->db->table('data_transaksi')->update($data, array('id_transaksi' => $id));
         // return $query;

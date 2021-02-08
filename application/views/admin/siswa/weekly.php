@@ -82,7 +82,7 @@
 											 class="btn btn-small text-danger btn-record" data-pack ="<?= $barang->isi_pack ?>"  data-id ="<?= $barang->id ?>"  data-name ="<?= $barang->item_name ?>"  data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i> Record</a>
 											 <?php }else{ ?>
 											<a href="<?php echo site_url('admin/siswa/edit/'.$barang->id_transaksi) ?>"
-											 class="btn btn-small btn-update" data-pack2 ="<?= $barang->isi_pack ?>" data-id2 ="<?= $barang->id ?>" data-id ="<?= $barang->id_transaksi ?>"  data-name ="<?= $barang->item_name ?>" data-cv ="<?= $barang->cv ?>"  data-pack ="<?= $barang->pack ?>" data-ea ="<?= $barang->ea ?>" data-stok ="<?= $barang->stok_op_name ?>" data-transfer ="<?= $barang->transfer ?>" data-endmonthly ="<?= $barang->endmonthly ?>" data-actual ="<?= $barang->actual ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
+											 class="btn btn-small btn-update" data-pack2 ="<?= $barang->isi_pack ?>" data-id2 ="<?= $barang->id ?>" data-id ="<?= $barang->id_transaksi_monthly ?>"  data-name ="<?= $barang->item_name ?>" data-cv ="<?= $barang->cv ?>"  data-pack ="<?= $barang->pack ?>" data-ea ="<?= $barang->ea ?>" data-stok ="<?= $barang->stok_op_name ?>" data-transfer ="<?= $barang->transfer ?>" data-endmonthly ="<?= $barang->endmonthly ?>" data-actual ="<?= $barang->actual ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
 											
 										<?php } ?>
 										</td>
@@ -108,7 +108,7 @@
 	<!-- /#wrapper -->
 
 	<!-- Modal Add Transaksi-->
-    <form id="search_form" action="<?php echo base_url('admin/siswa/store');?>" method="post">
+    <form id="search_form" action="<?php echo base_url('admin/siswa/store_monthly');?>" method="post">
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -150,7 +150,7 @@
     <!-- End Modal Add Transaksi-->
 
 	<!-- Modal Edit Transaksi-->
-    <form action="<?php echo base_url('admin/siswa/update');?>" method="post">
+    <form action="<?php echo base_url('admin/siswa/update_monthly');?>" method="post">
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -179,7 +179,7 @@
              
             </div>
             <div class="modal-footer">
-				<input type="hidden" name="id_transaksi" class="id_transaksi">
+				<input type="hidden" name="id_transaksi_monthly" class="id_transaksi_monthly">
 				<input type="hidden" name="id_barang" class="id_barang">
 				<input type="hidden" name="isi_pack" class="isi_pack">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -238,7 +238,7 @@
 	
 	 // Set data to Form Edit
 	 $('.item_name').val(name);
-	 $('.id_transaksi').val(id);
+	 $('.id_transaksi_monthly').val(id);
 	 $('.id_barang').val(id2);
 	 $('.cv').val(cv);
 	 $('.pack').val(pack);

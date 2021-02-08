@@ -28,15 +28,9 @@ class Siswa extends CI_Controller
         $this->load->view("admin/siswa/daily", $data);
     }
 
-    public function daily()
+    public function monthly()
     {
-        $data['data_barang'] = $this->barang_model->getTransaksiOnBarang();
-        $this->load->view("admin/siswa/daily", $data);
-    }
-
-    public function weekly()
-    {
-        $data['data_barang'] = $this->barang_model->getTransaksiOnBarang();
+        $data['data_barang'] = $this->barang_model->getTransaksiOnBarangMonthly();
         $this->load->view("admin/siswa/weekly", $data);
     }
 

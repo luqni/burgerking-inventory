@@ -82,9 +82,6 @@ class Transaksi_model extends CI_Model
     public function update()
     {
         $id =  $this->input->post('id_transaksi');
-        $stok_op_name =  $this->input->post('stok_op_name');
-        $endmonthly = $this->input->post('endmonthly');
-        $actual = $stok_op_name - $endmonthly;
         $pack =  $this->input->post('pack');
         $isi_pack =  $this->input->post('isi_pack');
         $ea = $pack * $isi_pack;
@@ -92,7 +89,6 @@ class Transaksi_model extends CI_Model
             'id_barang' => $this->input->post('id_barang'),
             'pack' => $this->input->post('pack'),
             'ea' => $ea,
-            'actual' => $actual,
             // 'date' => date("Y-m-d"),
         );
 

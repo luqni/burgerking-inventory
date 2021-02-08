@@ -10,7 +10,7 @@
             <span>Inventory</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/siswa/daily') ?>">Daily</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/siswa') ?>">Daily</a>
             <a class="dropdown-item" href="<?php echo site_url('admin/siswa/monthly') ?>">Monthly</a>
             <!-- <a class="dropdown-item" href="<?php echo site_url('admin/siswa') ?>">Monthly</a> -->
         </div>

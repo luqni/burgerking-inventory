@@ -74,10 +74,6 @@ class Transaksi_model extends CI_Model
             'id_barang' => $this->input->post('id_barang'),
             'pack' => $this->input->post('pack'),
             'ea' => $ea,
-            'stok_op_name' => $this->input->post('stok_op_name'),
-            'endmonthly' => $this->input->post('endmonthly'),
-            'transfer' => $this->input->post('transfer'),
-            'actual' => $actual,
             'date' => date("Y-m-d"),
         );
         return $this->db->insert('data_transaksi', $data);
@@ -96,9 +92,6 @@ class Transaksi_model extends CI_Model
             'id_barang' => $this->input->post('id_barang'),
             'pack' => $this->input->post('pack'),
             'ea' => $ea,
-            'stok_op_name' => $this->input->post('stok_op_name'),
-            'endmonthly' => $this->input->post('endmonthly'),
-            'transfer' => $this->input->post('transfer'),
             'actual' => $actual,
             // 'date' => date("Y-m-d"),
         );

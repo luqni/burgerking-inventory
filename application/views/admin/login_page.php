@@ -17,7 +17,8 @@
         <div class="row">
             <div class="col-12 col-md-6 text-center mt-5 mx-auto p-4">
                 <h1 class="h2">Login Admin</h1>
-                <p class="lead">Silahkan masuk ke Panel Admin</p>
+                <img style="display: block;margin-top: 20px;margin-left: auto;margin-right: auto;width: 25%;" src="<?php echo base_url('assets/img/burger-king.png') ?>" rel="stylesheet" alt="logo" width="90" height="100">
+                <p class="lead">BELLAGIO</p>
             </div>
         </div>
         <div class="row">

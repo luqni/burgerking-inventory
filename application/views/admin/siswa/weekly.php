@@ -66,13 +66,13 @@
 										<td style="text-align:center">
 											<?php echo $barang->item_name ?>
 										</td>
-										<td style="text-align:center">
+										<td style="text-align:center" width="50">
 											<?php echo $barang->pack ?>
 										</td>
-										<td style="text-align:center">
+										<td style="text-align:center" width="50">
 											<?php echo $barang->isi_pack ?>
 										</td>
-										<td style="text-align:center">
+										<td style="text-align:center" width="50">
 											<?php echo $barang->ea ?>
 										</td>
 										

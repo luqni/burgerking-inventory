@@ -15,21 +15,28 @@
             <!-- <a class="dropdown-item" href="<?php echo site_url('admin/siswa') ?>">Monthly</a> -->
         </div>
     </li>
-    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'products' ? 'active': '' ?>">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+    <li class="nav-item <?php echo $this->uri->segment(2) == '' ? 'active': '' ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/transfer') ?>">
+            <i class="fas fa-fw fa-boxes"></i>
+            <span>Transfer</span>
+        </a>
+    </li>
+    <li class="nav-item <?php echo $this->uri->segment(2) == '' ? 'active': '' ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/waste') ?>">
             <i class="fas fa-fw fa-boxes"></i>
             <span>Waste</span>
         </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/products/add') ?>">New Product</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/products') ?>">List Product</a>
-        </div>
     </li>
     <li class="nav-item <?php echo $this->uri->segment(2) == '' ? 'active': '' ?>">
         <a class="nav-link" href="<?php echo site_url('admin/barang') ?>">
             <i class="fas fa-fw fa-boxes"></i>
             <span>List Barang</span>
+        </a>
+    </li>
+    <li class="nav-item <?php echo $this->uri->segment(2) == '' ? 'active': '' ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/cabang') ?>">
+            <i class="fas fa-fw fa-boxes"></i>
+            <span>List Cabang</span>
         </a>
     </li>
     <li class="nav-item">

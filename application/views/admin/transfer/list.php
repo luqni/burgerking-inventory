@@ -24,9 +24,16 @@
 					<div class="card-header">
 					<a href="" data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i> Add New</a>
 					<div class="panel-body">
-						<h4 align="center">MENU <br/> Transfer </h4>
+						<h4 align="center">MENU <br/> TRANSFER </h4>
 					</div>
-						
+					<hr>
+						<div class="container">
+							<form action="admin/siswa/index/">
+								<label for="birthday">Date:</label>
+								<input type="date" id="date" name="date">
+								<input type="submit" value="Submit">
+							</form>
+						</div>
 					</div>
 
 					<div class="card-body">

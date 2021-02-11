@@ -16,7 +16,12 @@ class Siswa extends CI_Controller
 
     public function index($date = null)
     {
-        // if (!isset($id))$date = date("Y-m-d");
+        // if (!isset($date)) {
+            
+            // $data['data_barang'] = $this->barang_model->getTransaksiOnBarangByDate($date);
+        // }else{
+            $data['data_barang'] = $this->barang_model->getTransaksiOnBarang();
+        // }
         
             
               
@@ -24,7 +29,13 @@ class Siswa extends CI_Controller
         // $data["data_transaksi"] = $this->transaksi_model->getAll();
         // $data["data_barang"] = $this->barang_model->getAll();
         // $data["data_barang"] = $this->barang_model->leftJoin();
-        $data['data_barang'] = $this->barang_model->getTransaksiOnBarang();
+        
+        $this->load->view("admin/siswa/daily", $data);
+    }
+
+    public function selectByDate()
+    {
+        $data['data_barang'] = $this->barang_model->getTransaksiOnBarangByDate();
         $this->load->view("admin/siswa/daily", $data);
     }
 
@@ -83,7 +94,7 @@ class Siswa extends CI_Controller
     {
         if (!isset($id)) show_404();
         
-        if ($this->siswa_model->delete($id)) {
+        if ($this->transaksi_model->delete($id)) {
             redirect(site_url('admin/siswa'));
             $this->session->set_flashdata('Berhasil Di Hapus');
         }

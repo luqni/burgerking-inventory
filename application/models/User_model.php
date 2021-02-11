@@ -69,6 +69,7 @@ class User_model extends CI_Model
             $isAdmin = $user->role == "admin";
             if($isPasswordTrue && $isAdmin){ 
                 $this->session->set_userdata(['user_logged' => $user]);
+                $this->session->set_userdata('username', $user->username);
                 $this->_updateLastLogin($user->user_id);
                 return true;
             }

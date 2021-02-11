@@ -28,7 +28,7 @@
 					</div>
 					<hr>
 						<div class="container">
-							<form action="admin/siswa/index/">
+							<form action="<?php echo base_url('admin/siswa');?>">
 								<label for="birthday">Date:</label>
 								<input type="date" id="date" name="date">
 								<input type="submit" value="Submit">

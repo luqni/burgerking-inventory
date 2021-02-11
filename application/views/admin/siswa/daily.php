@@ -25,6 +25,7 @@
 					
 					<div class="panel-body">
 						<h4 align="center">MENU <br/>DAILY INVENTORY </h4>
+						<!-- <p> Hi!, <?php echo $this->session->userdata('username'); ?></p> -->
 					</div>
 					<hr>
 						<div class="container">
@@ -83,8 +84,11 @@
 											 <?php }else{ ?>
 											<a href="<?php echo site_url('admin/siswa/edit/'.$barang->id_transaksi) ?>"
 											 class="btn btn-small btn-update" data-pack2 ="<?= $barang->isi_pack ?>" data-id2 ="<?= $barang->id ?>" data-id ="<?= $barang->id_transaksi ?>"  data-name ="<?= $barang->item_name ?>" data-cv ="<?= $barang->cv ?>"  data-pack ="<?= $barang->pack ?>" data-ea ="<?= $barang->ea ?>" data-stok ="<?= $barang->stok_op_name ?>" data-transfer ="<?= $barang->transfer ?>" data-endmonthly ="<?= $barang->endmonthly ?>" data-actual ="<?= $barang->actual ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
-											
-										<?php } ?>
+											<?php } ?>
+											<?php if($this->session->userdata('username') === 'manager' && $barang->pack !== null) {?>
+											<a onclick="deleteConfirm('<?php echo site_url('admin/siswa/delete/'.$barang->id_transaksi) ?>')"
+												href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+											<?php } ?>
 										</td>
 									</tr>
 									<?php endforeach; ?>

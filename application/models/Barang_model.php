@@ -62,6 +62,17 @@ class Barang_model extends CI_Model
         return $query->result();
     }
 
+    function getTransaksiOnBarangByDate($date)
+    {
+
+        $this->db->select('*');
+        $this->db->from('data_barang');
+        $this->db->join('data_transaksi', 'data_transaksi.id_barang = data_barang.id', 'left');
+        $this->db->where('date', $date);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function getTransaksiOnBarangMonthly()
     {
         $this->db->select('*');

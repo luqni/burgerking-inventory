@@ -7,13 +7,18 @@ class Login extends CI_Controller
         parent::__construct();
         $this->load->model("user_model");
         $this->load->library('form_validation');
+        $this->load->library('session');
         // $this->output->enable_profiler(TRUE);
     }
 
     public function index()
     {
         if ($this->input->post()) {
-            if ($this->user_model->doLogin()) redirect(site_url('admin'));
+            if ($this->user_model->doLogin())
+            
+ 
+            $this->session->set_userdata('some_name','some_value');
+            redirect(site_url('admin'));
         }
         $this->load->view("admin/login_page.php");
     }

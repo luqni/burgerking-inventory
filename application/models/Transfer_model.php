@@ -39,7 +39,7 @@ class Transfer_model extends CI_Model
         $this->db->from('transfer');
         $this->db->join('cabang', 'cabang.id = transfer.id');
         $query = $this->db->get();
-        return $this->db->get($this->_table)->result();
+        return $query->result();
     }
 
     public function getCabang()

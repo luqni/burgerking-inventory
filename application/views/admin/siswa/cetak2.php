@@ -24,7 +24,7 @@ $pdf->Cell(35,10,'Isi Pack',1,0, 'C');
 $pdf->Cell(35,10,'EA',1,1, 'C');
 
 
-$hasil = mysqli_query($db_conn,"SELECT * FROM data_barang JOIN data_transaksi_monthly ON data_barang.id = data_transaksi.id_barang");
+$hasil = mysqli_query($db_conn,"SELECT * FROM data_barang JOIN data_transaksi_monthly ON data_barang.id = data_transaksi_monthly.id_barang");
 while ($row = mysqli_fetch_array($hasil)){
     $pdf->Cell(25,6,$row['kode'],1,0, 'C');
     $pdf->Cell(45,6,$row['item_name'],1,0,'C');

@@ -16,12 +16,11 @@ class Siswa extends CI_Controller
 
     public function index($date = null)
     {
-        // if (!isset($date)) {
-            
-            // $data['data_barang'] = $this->barang_model->getTransaksiOnBarangByDate($date);
-        // }else{
+        if (isset($date)) {
+            $data['data_barang'] = $this->barang_model->getTransaksiOnBarangByDate($date);
+        }else{
             $data['data_barang'] = $this->barang_model->getTransaksiOnBarang();
-        // }
+        }
         
             
               
@@ -35,14 +34,49 @@ class Siswa extends CI_Controller
 
     public function selectByDate()
     {
-        $data['data_barang'] = $this->barang_model->getTransaksiOnBarangByDate();
+        $post = $this->input->post();
+        $date = $post["tanggal"];
+        if ($date != null) {
+            $data['data_barang'] = $this->barang_model->getTransaksiOnBarangByDate($date);
+        }else{
+            $data['data_barang'] = $this->barang_model->getTransaksiOnBarang();
+        }
         $this->load->view("admin/siswa/daily", $data);
     }
+
+    public function selectByDateMonthly()
+    {
+        $post = $this->input->post();
+        $date = $post["tanggal"];
+        if ($date != null) {
+            $data['data_barang'] = $this->barang_model->getTransaksiOnBarangMonthlyByDate($date);
+        }else{
+            $data['data_barang'] = $this->barang_model->getTransaksiOnBarangMonthly();
+        }
+        $this->load->view("admin/siswa/weekly", $data);
+    }
+    
 
     public function monthly()
     {
         $data['data_barang'] = $this->barang_model->getTransaksiOnBarangMonthly();
         $this->load->view("admin/siswa/weekly", $data);
+    }
+
+    public function cetak()
+    {
+        $post = $this->input->post();
+        $date = $post["tanggal"];
+        $data['date'] = $this->transaksi_model->getByDay($date);
+        $this->load->view("admin/siswa/cetak1", $data);
+    }
+
+    public function cetak2()
+    {
+        $post = $this->input->post();
+        $date = $post["tanggal"];
+        $data['date'] = $this->transaksi_model->getByDay($date);
+        $this->load->view("admin/siswa/cetak2", $data);
     }
 
     public function store()

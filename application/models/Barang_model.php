@@ -62,13 +62,15 @@ class Barang_model extends CI_Model
         return $query->result();
     }
 
-    function getTransaksiOnBarangByDate($date)
+    function getTransaksiOnBarangByDate()
     {
+        $post = $this->input->post();
+        $date = $post["tanggal"];
 
         $this->db->select('*');
         $this->db->from('data_barang');
-        $this->db->join('data_transaksi', 'data_transaksi.id_barang = data_barang.id', 'left');
-        $this->db->where('date', $date);
+        $this->db->join('data_transaksi', 'data_transaksi.id_barang = data_barang.id');
+        $this->db->where('data_transaksi.date', $date);
         $query = $this->db->get();
         return $query->result();
     }
@@ -78,6 +80,19 @@ class Barang_model extends CI_Model
         $this->db->select('*');
         $this->db->from('data_barang');
         $this->db->join('data_transaksi_monthly', 'data_transaksi_monthly.id_barang = data_barang.id', 'left');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function getTransaksiOnBarangMonthlyByDate()
+    {
+        $post = $this->input->post();
+        $date = $post["tanggal"];
+
+        $this->db->select('*');
+        $this->db->from('data_barang');
+        $this->db->join('data_transaksi_monthly', 'data_transaksi_monthly.id_barang = data_barang.id');
+        $this->db->where('data_transaksi_monthly.date', $date);
         $query = $this->db->get();
         return $query->result();
     }

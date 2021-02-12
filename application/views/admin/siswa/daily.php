@@ -22,19 +22,39 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
+
+					<!-- <a href="<?php echo site_url('admin/siswa/cetak') ?>"><i class="fas fa-plus"></i> Cetak</a> -->
 					
 					<div class="panel-body">
 						<h4 align="center">MENU <br/>DAILY INVENTORY </h4>
 						<!-- <p> Hi!, <?php echo $this->session->userdata('username'); ?></p> -->
 					</div>
 					<hr>
-						<div class="container">
-							<form action="admin/siswa/index/">
-								<label for="birthday">Date:</label>
-								<input type="date" id="date" name="date">
-								<input type="submit" value="Submit">
-							</form>
+					<div class="container">
+						<div class="row">
+							<div class="col">
+							<form action="<?php echo base_url('admin/siswa/selectByDate');?>" method="post">
+								<div class="row align-items-center">
+									<label class="form-control-label" for="tanggal">Pilih Tanggal :</label>
+									<input type="date" id="tanggal" name="tanggal">
+									<button  id="btn-submit">Search</button> 
+								</div>
+							</form> 
+							</div>
+							<div class="row justify-content-end" class="col">
+							<!-- <form action="<?php echo base_url('admin/siswa/cetak');?>" method="post">
+								<div class="row align-items-center">
+									<label class="form-control-label" for="tanggal">Pilih Tanggal :</label>
+									<input type="date" id="tanggal" name="tanggal">
+									<button   target="_blank">Cetak</button> 
+								</div>
+							</form> -->
+							<a  class="btn btn-primary" href="<?php echo base_url('admin/siswa/cetak');?>" target="_blank">Cetak</a>
+							</div>
 						</div>
+					</div>
+					         
+                   
 					</div>
 
 					<div class="card-body">
@@ -202,15 +222,44 @@
 	<?php $this->load->view("admin/_partials/js.php") ?>
 
 	<script>
-
-	function form_submit() {
-    document.getElementById("search_form").submit();
-   } 
-
-  
- 
 	
 	$(document).ready(function(){
+	
+	$('#btn-submit').on('click',function(){
+	 var tanggal = $('#tanggal').val();
+	 var url = '<?php echo base_url('admin/siswa/selectByDate');?>';
+	
+	$.ajax({
+        
+        url:url,
+        method:'POST',
+        data: 
+            {
+                tanggal:tanggal, 
+            }, 
+            
+            
+        }
+
+	}
+
+	$('#btn-cetak').on('click',function(){
+	 var tanggal = $('#tanggal').val();
+	 var url = '<?php echo base_url('admin/siswa/cetak');?>';
+	
+	$.ajax({
+        
+        url:url,
+        method:'POST',
+        data: 
+            {
+                tanggal:tanggal, 
+            }, 
+            
+            
+        }
+
+	}
  
 	 // get Edit Product
  	$('.btn-record').on('click',function(){

@@ -3,6 +3,7 @@
 class Transaksi_model extends CI_Model
 {
     private $_table = "data_transaksi";
+    private $_table2 = "data_transaksi_monthly";
 
     public $id_transaksi;
     public $cv;
@@ -137,6 +138,11 @@ class Transaksi_model extends CI_Model
     }
 
     public function delete($id)
+    {
+        return $this->db->delete($this->_table2, array("id_transaksi_monthly" => $id));
+	}
+
+    public function deleteDaily($id)
     {
         return $this->db->delete($this->_table, array("id_transaksi" => $id));
 	}

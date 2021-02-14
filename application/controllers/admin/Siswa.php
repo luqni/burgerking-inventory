@@ -124,11 +124,21 @@ class Siswa extends CI_Controller
         $this->load->view("admin/siswa/edit_form", $data);
     }
 
-    public function delete($id=null)
+    public function deleteMonthly($id=null)
     {
         if (!isset($id)) show_404();
         
         if ($this->transaksi_model->delete($id)) {
+            redirect(site_url('admin/siswa/monthly'));
+            $this->session->set_flashdata('Berhasil Di Hapus');
+        }
+    }
+
+    public function deleteDaily($id=null)
+    {
+        if (!isset($id)) show_404();
+        
+        if ($this->transaksi_model->deleteDaily($id)) {
             redirect(site_url('admin/siswa'));
             $this->session->set_flashdata('Berhasil Di Hapus');
         }

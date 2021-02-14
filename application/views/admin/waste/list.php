@@ -85,7 +85,10 @@
 										<td style="text-align:center" width="250"> 
 											<a href=""
 											 class="btn btn-small btn-update" data-id ="<?= $waste->id ?>"  data-product ="<?= $waste->product ?>" data-qty ="<?= $waste->qty ?>" data-keterangan ="<?= $waste->keterangan ?>" data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
-											
+											 <?php if($this->session->userdata('username') === 'manager' ) {?>
+											<a 
+												href="<?php echo site_url('admin/waste/delete/'.$waste->id) ?>" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+											<?php } ?>
 										
 										</td>
 									</tr>

@@ -79,8 +79,8 @@ class Waste extends CI_Controller
     {
         if (!isset($id)) show_404();
         
-        if ($this->siswa_model->delete($id)) {
-            redirect(site_url('admin/siswa'));
+        if ($this->waste_model->delete($id)) {
+            redirect(site_url('admin/waste'));
             $this->session->set_flashdata('Berhasil Di Hapus');
         }
     }

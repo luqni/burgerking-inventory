@@ -104,7 +104,7 @@
 											
 											<?php if($this->session->userdata('username') === 'manager' && $barang->pack !== null) {?>
 											<a 
-												href="<?php echo site_url('admin/siswa/deleteMonthly/'.$barang->id_transaksi_monthly) ?>" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+												href="<?php echo site_url('admin/siswa/deleteDaily/'.$barang->id_transaksi) ?>" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
 											<?php } ?>
 										</td>
 									</tr>

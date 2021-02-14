@@ -53,7 +53,7 @@
 					</div>
 
 					<div class="card-body">
-
+						
 						<div class="table-responsive">
 							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 								<thead class="thead-dark">
@@ -96,7 +96,10 @@
 											<a href=""
 											 class="btn btn-small btn-update"  data-id ="<?= $transfer->id_transfer ?>" data-id2 ="<?= $transfer->id_cabang ?>" data-item ="<?= $transfer->item_name ?>" data-qty ="<?= $transfer->qty ?>" data-approved ="<?= $transfer->approved ?>" data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
 											
-										
+											<?php if($this->session->userdata('username') === 'manager' ) {?>
+											<a 
+												href="<?php echo site_url('admin/transfer/delete/'.$transfer->id_transfer) ?>" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+											<?php } ?>
 										</td>
 									</tr>
 									<?php endforeach; ?>

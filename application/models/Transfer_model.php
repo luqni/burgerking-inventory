@@ -10,6 +10,7 @@ class Transfer_model extends CI_Model
     public $item_name;
     public $qty;
     public $approved;
+    public $date;
     
 
     public function rules()
@@ -37,7 +38,7 @@ class Transfer_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('transfer');
-        $this->db->join('cabang', 'cabang.id = transfer.id');
+        $this->db->join('cabang', 'cabang.id= transfer.id_cabang','left');
         $query = $this->db->get();
         return $query->result();
     }
@@ -52,7 +53,18 @@ class Transfer_model extends CI_Model
         return $this->db->get_where($this->_table, ["product_id" => $id])->row();
     }
 
-    
+    function getTransferOnBarangByDate()
+    {
+        $post = $this->input->post();
+        $date = $post["tanggal"];
+
+        $this->db->select('*');
+        $this->db->from('transfer');
+        $this->db->join('cabang', 'cabang.id= transfer.id_cabang','left');
+        $this->db->where('transfer.date', $date);
+        $query = $this->db->get();
+        return $query->result();
+    }    
 
 
     public function insert_transfer()
@@ -63,6 +75,7 @@ class Transfer_model extends CI_Model
             'item_name' => $this->input->post('item_name'),
             'qty' => $this->input->post('qty'),
             'approved' => $this->input->post('approved'),
+            'date' => date("Y-m-d"),
             
         );
         return $this->db->insert('transfer', $data);
@@ -71,20 +84,21 @@ class Transfer_model extends CI_Model
 
     public function update()
     {
-        $post = $this->input->post();
-        $this->product_id = $post["id"];
-        $this->name = $post["name"];
-		$this->price = $post["price"];
-		
-		
-		if (!empty($_FILES["image"]["name"])) {
-            $this->image = $this->_uploadImage();
-        } else {
-            $this->image = $post["old_image"];
-		}
+        $id =  $this->input->post('id_transfer');
+        $id_cabang =  $this->input->post('id_cabang');
+        $item_name =  $this->input->post('item_name');
+        $qty =  $this->input->post('qty');
+        $approved =  $this->input->post('approved');
+        $data = array(
+            'id_cabang' => $this->input->post('id_cabang'),
+            'item_name' => $this->input->post('item_name'),
+            'qty' => $this->input->post('qty'),
+            'approved' => $this->input->post('approved'),
+        );
 
-        $this->description = $post["description"];
-        $this->db->update($this->_table, $this, array('product_id' => $post['id']));
+        $this->db->where('id_transfer',$id);
+        return $this->db->update('transfer',$data);
+
     }
 
     public function delete($id)

@@ -14,7 +14,10 @@ $pdf->Cell(170,5,'MONTHLY INVENTORY',0,1,'C');
 $pdf->Cell(170,5,'BURGERKING BELLAGIO',0,1,'C');
 $pdf->Cell(27,3,'',0,1);
 $pdf->SetFont('times','',10);
-$pdf->Cell(150,5,'Tanggal',0,1,'R');
+foreach ($data_barang as $barang){
+$pdf->Cell(150,5,$barang->date ,0,1,'R');
+break;
+}
 $pdf->Cell(27,3,'',0,1);
 
 $pdf->Cell(25,10,'Kode',1,0, 'C');
@@ -24,14 +27,21 @@ $pdf->Cell(35,10,'Isi Pack',1,0, 'C');
 $pdf->Cell(35,10,'EA',1,1, 'C');
 
 
-$hasil = mysqli_query($db_conn,"SELECT * FROM data_barang JOIN data_transaksi_monthly ON data_barang.id = data_transaksi_monthly.id_barang");
-while ($row = mysqli_fetch_array($hasil)){
-    $pdf->Cell(25,6,$row['kode'],1,0, 'C');
-    $pdf->Cell(45,6,$row['item_name'],1,0,'C');
-    $pdf->Cell(35,6,$row['pack'],1,0, 'C');
-    $pdf->Cell(35,6,$row['isi_pack'],1,0, 'C');
-    $pdf->Cell(35,6,$row['ea'],1,1, 'C'); 
+foreach ($data_barang as $barang){
+    $pdf->Cell(25,6,$barang->kode,1,0, 'C');
+    $pdf->Cell(45,6,$barang->item_name,1,0,'C');
+    $pdf->Cell(35,6,$barang->pack,1,0, 'C');
+    $pdf->Cell(35,6,$barang->isi_pack,1,0, 'C');
+    $pdf->Cell(35,6,$barang->ea,1,1, 'C'); 
 }
+// $hasil = mysqli_query($db_conn,"SELECT * FROM data_barang JOIN data_transaksi ON data_barang.id = data_transaksi.id_barang where date='$date'");
+// while ($row = mysqli_fetch_array($data_barang)){
+//     $pdf->Cell(25,6,$row['kode'],1,0, 'C');
+//     $pdf->Cell(45,6,$row['item_name'],1,0,'C');
+//     $pdf->Cell(35,6,$row['pack'],1,0, 'C');
+//     $pdf->Cell(35,6,$row['isi_pack'],1,0, 'C');
+//     $pdf->Cell(35,6,$row['ea'],1,1, 'C'); 
+// }
 
 $pdf->Output();
 ?>

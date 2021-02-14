@@ -30,7 +30,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col">
-							<form action="<?php echo base_url('admin/siswa/selectByDateMonthly');?>" method="post">
+							<form action="<?php echo base_url('admin/siswa/selectByDate');?>" method="post">
 								<div class="row align-items-center">
 									<label class="form-control-label" for="tanggal">Pilih Tanggal :</label>
 									<input type="date" id="tanggal" name="tanggal">
@@ -39,14 +39,14 @@
 							</form> 
 							</div>
 							<div class="row justify-content-end" class="col">
-							<!-- <form action="<?php echo base_url('admin/siswa/cetak');?>" method="post">
+							<form action="<?php echo base_url('admin/siswa/cetak');?>" method="post" target="_blank">
 								<div class="row align-items-center">
 									<label class="form-control-label" for="tanggal">Pilih Tanggal :</label>
 									<input type="date" id="tanggal" name="tanggal">
 									<button   target="_blank">Cetak</button> 
 								</div>
-							</form> -->
-							<a  class="btn btn-primary" href="<?php echo base_url('admin/siswa/cetak');?>" target="_blank">Cetak</a>
+							</form>
+							<!-- <a  class="btn btn-primary" href="<?php echo base_url('admin/siswa/cetak');?>" target="_blank">Cetak</a> -->
 							</div>
 						</div>
 					</div>
@@ -101,6 +101,7 @@
 											 class="btn btn-small btn-update" data-pack2 ="<?= $barang->isi_pack ?>" data-id2 ="<?= $barang->id ?>" data-id ="<?= $barang->id_transaksi ?>"  data-name ="<?= $barang->item_name ?>" data-cv ="<?= $barang->cv ?>"  data-pack ="<?= $barang->pack ?>" data-ea ="<?= $barang->ea ?>" data-stok ="<?= $barang->stok_op_name ?>" data-transfer ="<?= $barang->transfer ?>" data-endmonthly ="<?= $barang->endmonthly ?>" data-actual ="<?= $barang->actual ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
 											
 											<?php } ?>
+											
 											<?php if($this->session->userdata('username') === 'manager' && $barang->pack !== null) {?>
 											<a 
 												href="<?php echo site_url('admin/siswa/deleteMonthly/'.$barang->id_transaksi_monthly) ?>" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>

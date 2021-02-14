@@ -10,29 +10,25 @@ $pdf->AddPage();
 
 $pdf->SetFont('times','B',10);
 // mencetak string 
-$pdf->Cell(170,5,'DAILY INVENTORY',0,1,'C');
+$pdf->Cell(170,5,'WASTE',0,1,'C');
 $pdf->Cell(170,5,'BURGERKING BELLAGIO',0,1,'C');
 $pdf->Cell(27,3,'',0,1);
 $pdf->SetFont('times','',10);
-foreach ($data_barang as $barang){
+foreach ($data_waste as $barang){
 $pdf->Cell(150,5,$barang->date ,0,1,'R');
 break;
 }
 $pdf->Cell(27,3,'',0,1);
 
-$pdf->Cell(25,10,'Kode',1,0, 'C');
-$pdf->Cell(45,10,'Name',1,0,'C');
-$pdf->Cell(35,10,'Pack',1,0, 'C');
-$pdf->Cell(35,10,'Isi Pack',1,0, 'C');
-$pdf->Cell(35,10,'EA',1,1, 'C');
+$pdf->Cell(40,10,'Product',1,0, 'C');
+$pdf->Cell(65,10,'Quantity',1,0,'C');
+$pdf->Cell(55,10,'Keterangan',1,1, 'C');
 
-
-foreach ($data_barang as $barang){
-    $pdf->Cell(25,6,$barang->kode,1,0, 'C');
-    $pdf->Cell(45,6,$barang->item_name,1,0,'C');
-    $pdf->Cell(35,6,$barang->pack,1,0, 'C');
-    $pdf->Cell(35,6,$barang->isi_pack,1,0, 'C');
-    $pdf->Cell(35,6,$barang->ea,1,1, 'C'); 
+foreach ($data_waste as $waste){
+    $pdf->Cell(40,6,$waste->product,1,0, 'C');
+    $pdf->Cell(65,6,$waste->qty,1,0,'C');
+    $pdf->Cell(55,6,$waste->keterangan,1,1, 'C');
+    
 }
 // $hasil = mysqli_query($db_conn,"SELECT * FROM data_barang JOIN data_transaksi ON data_barang.id = data_transaksi.id_barang where date='$date'");
 // while ($row = mysqli_fetch_array($data_barang)){

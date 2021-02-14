@@ -27,13 +27,29 @@
 						<h4 align="center">MENU <br/> WASTE </h4>
 					</div>
 					<hr>
-						<div class="container">
-							<form action="admin/siswa/index/">
-								<label for="birthday">Date:</label>
-								<input type="date" id="date" name="date">
-								<input type="submit" value="Submit">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+							<form action="<?php echo base_url('admin/waste/selectByDate');?>" method="post">
+								<div class="row align-items-center">
+									<label class="form-control-label" for="tanggal">Pilih Tanggal :</label>
+									<input type="date" id="tanggal" name="tanggal">
+									<button  id="btn-submit">Search</button> 
+								</div>
+							</form> 
+							</div>
+							<div class="row justify-content-end" class="col">
+							<form action="<?php echo base_url('admin/waste/cetak');?>" method="post" target="_blank">
+								<div class="row align-items-center">
+									<label class="form-control-label" for="tanggal">Pilih Tanggal :</label>
+									<input type="date" id="tanggal" name="tanggal">
+									<button   target="_blank">Cetak</button> 
+								</div>
 							</form>
+							<!-- <a  class="btn btn-primary" href="<?php echo base_url('admin/siswa/cetak');?>" target="_blank">Cetak</a> -->
+							</div>
 						</div>
+					</div>
 					</div>
 
 					<div class="card-body">
@@ -68,7 +84,7 @@
 										
 										<td style="text-align:center" width="250"> 
 											<a href=""
-											 class="btn btn-small btn-update"  data-toggle="modal" data-target="#addModal" ><i class="fas fa-edit"></i> Update</a>
+											 class="btn btn-small btn-update" data-id ="<?= $waste->id ?>"  data-product ="<?= $waste->product ?>" data-qty ="<?= $waste->qty ?>" data-keterangan ="<?= $waste->keterangan ?>" data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
 											
 										
 										</td>
@@ -132,6 +148,46 @@
     </form>
     <!-- End Modal Add Transaksi-->
 
+	<!-- Modal Edit Transaksi-->
+    <form id="search_form" action="<?php echo base_url('admin/waste/update');?>" method="post">
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Data Waste</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+				<div class="form-group">
+                    <label>Product</label>
+                    <input type="text" id="product" class="form-control product" name="product" placeholder="Product">
+                </div>
+             
+                <div class="form-group">
+                    <label>Quantity</label>
+                    <input type="number" class="form-control qty" name="qty" placeholder="Quantity">
+                </div>
+
+				<div class="form-group">
+                    <label>Keterangan</label>
+                    <input type="text" class="form-control keterangan" name="keterangan" placeholder="Keterangan">
+                </div>
+             
+            </div>
+            <div class="modal-footer">
+				<input type="hidden" name="id" class="id">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit"  id="btn-submit2" class="btn btn-primary">Record</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </form>
+    <!-- End Modal Edit Transaksi-->
+
 	
 	<?php $this->load->view("admin/_partials/scrolltop.php") ?>
 	<?php $this->load->view("admin/_partials/modal.php") ?>
@@ -165,27 +221,18 @@
 	 $('.btn-update').on('click',function(){
 	 // get data from button edit
 	 const id = $(this).data('id');
-	 const id2 = $(this).data('id2');
-	 const name = $(this).data('name');
-	 const cv = $(this).data('cv');
-	 const pack = $(this).data('pack');
-	 const ea = $(this).data('ea');
-	 const stok = $(this).data('stok');
-	 const transfer = $(this).data('transfer');
-	 const endmonthly = $(this).data('endmonthly');
-	 const actual = $(this).data('actual');
+	 const product = $(this).data('product');
+	 const qty = $(this).data('qty');
+	 const keterangan = $(this).data('keterangan');
+	 
+	 
 	
 	 // Set data to Form Edit
-	 $('.item_name').val(name);
-	 $('.id_transaksi').val(id);
-	 $('.id_barang').val(id2);
-	 $('.cv').val(cv);
-	 $('.pack').val(pack);
-	 $('.ea').val(ea);
-	 $('.stok-op-name').val(stok);
-	 $('.transfer').val(transfer);
-	 $('.endmonthly').val(endmonthly);
-	 $('.actual').val(actual);
+	 
+	 $('.id').val(id);
+	 $('.product').val(product);
+	 $('.qty').val(qty);
+	 $('.keterangan').val(keterangan);
 	 // Call Modal Edit
 	
  	});

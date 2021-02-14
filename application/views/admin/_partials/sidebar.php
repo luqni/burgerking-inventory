@@ -39,7 +39,7 @@
             <span>List Cabang</span>
         </a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-users"></i>
             <span>Users</span></a>
@@ -48,5 +48,5 @@
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-cog"></i>
             <span>Settings</span></a>
-    </li>
+    </li> -->
 </ul>

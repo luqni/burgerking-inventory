@@ -63,20 +63,32 @@ class Waste_model extends CI_Model
 
     public function update()
     {
-        $post = $this->input->post();
-        $this->product_id = $post["id"];
-        $this->name = $post["name"];
-		$this->price = $post["price"];
-		
-		
-		if (!empty($_FILES["image"]["name"])) {
-            $this->image = $this->_uploadImage();
-        } else {
-            $this->image = $post["old_image"];
-		}
+        $id =  $this->input->post('id');
+        $product =  $this->input->post('product');
+        $qty =  $this->input->post('qty');
+        $keterangan =  $this->input->post('keterangan');
+        
+        $data = array(
+            'product' => $this->input->post('product'),
+            'qty' => $this->input->post('qty'),
+            'keterangan' => $this->input->post('keterangan'),
+        );
 
-        $this->description = $post["description"];
-        $this->db->update($this->_table, $this, array('product_id' => $post['id']));
+        $this->db->where('id',$id);
+        return $this->db->update('waste',$data);
+
+    }
+
+    function getWasteByDate()
+    {
+        $post = $this->input->post();
+        $date = $post["tanggal"];
+
+        $this->db->select('*');
+        $this->db->from('waste');
+        $this->db->where('date', $date);
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function delete($id)

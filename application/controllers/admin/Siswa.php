@@ -67,7 +67,11 @@ class Siswa extends CI_Controller
     {
         $post = $this->input->post();
         $date = $post["tanggal"];
-        $data['date'] = $this->transaksi_model->getByDay($date);
+        if ($date != null) {
+            $data['data_barang'] = $this->barang_model->getTransaksiOnBarangByDate($date);
+        }else{
+            $data['data_barang'] = $this->barang_model->getTransaksiOnBarang();
+        }
         $this->load->view("admin/siswa/cetak1", $data);
     }
 
@@ -75,7 +79,11 @@ class Siswa extends CI_Controller
     {
         $post = $this->input->post();
         $date = $post["tanggal"];
-        $data['date'] = $this->transaksi_model->getByDay($date);
+        if ($date != null) {
+            $data['data_barang'] = $this->barang_model->getTransaksiOnBarangMonthlyByDate($date);
+        }else{
+            $data['data_barang'] = $this->barang_model->getTransaksiOnBarangMonthly();
+        }
         $this->load->view("admin/siswa/cetak2", $data);
     }
 

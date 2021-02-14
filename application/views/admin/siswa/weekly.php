@@ -39,14 +39,14 @@
 							</form> 
 							</div>
 							<div class="row justify-content-end" class="col">
-							<!-- <form action="<?php echo base_url('admin/siswa/cetak');?>" method="post">
+							<form action="<?php echo base_url('admin/siswa/cetak2');?>" method="post" target="_blank">
 								<div class="row align-items-center">
 									<label class="form-control-label" for="tanggal">Pilih Tanggal :</label>
 									<input type="date" id="tanggal" name="tanggal">
 									<button   target="_blank">Cetak</button> 
 								</div>
-							</form> -->
-							<a  class="btn btn-primary" href="<?php echo base_url('admin/siswa/cetak2');?>" target="_blank">Cetak</a>
+							</form>
+							<!-- <a  class="btn btn-primary" href="<?php echo base_url('admin/siswa/cetak2');?>" target="_blank">Cetak</a> -->
 							</div>
 						</div>
 					</div>

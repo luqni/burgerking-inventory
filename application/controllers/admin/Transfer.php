@@ -20,6 +20,34 @@ class Transfer extends CI_Controller
         $this->load->view("admin/transfer/list", $data);
     }
 
+    public function selectByDate()
+    {
+        $post = $this->input->post();
+        $date = $post["tanggal"];
+        if ($date != null) {
+            $data['data_transfer'] = $this->transfer_model->getTransferOnBarangByDate($date);
+            $data['cabang'] = $this->transfer_model->getCabang();
+        }else{
+            $data['data_transfer'] = $this->transfer_model->getAll();
+            $data['cabang'] = $this->transfer_model->getCabang();
+        }
+        $this->load->view("admin/transfer/list", $data);
+    }
+
+    public function cetak()
+    {
+        $post = $this->input->post();
+        $date = $post["tanggal"];
+        if ($date != null) {
+            $data['data_transfer'] = $this->transfer_model->getTransferOnBarangByDate($date);
+            $data['cabang'] = $this->transfer_model->getCabang();
+        }else{
+            $data['data_transfer'] = $this->transfer_model->getAll();
+            $data['cabang'] = $this->transfer_model->getCabang();
+        }
+        $this->load->view("admin/siswa/cetak3", $data);
+    }
+
 
     public function store_transfer()
     {
@@ -30,9 +58,9 @@ class Transfer extends CI_Controller
 
     public function update()
     {
-        $products=new Transaksi_model;
+        $products=new Transfer_model;
         $products->update();
-        redirect(base_url('admin/siswa'));
+        redirect(base_url('admin/transfer'));
     }
 
     public function edit($id = null)

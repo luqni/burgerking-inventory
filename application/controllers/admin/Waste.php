@@ -19,6 +19,30 @@ class Waste extends CI_Controller
         $this->load->view("admin/waste/list", $data);
     }
 
+    public function selectByDate()
+    {
+        $post = $this->input->post();
+        $date = $post["tanggal"];
+        if ($date != null) {
+            $data['data_waste'] = $this->waste_model->getWasteByDate($date);
+        }else{
+            $data['data_waste'] = $this->waste_model->getAll();  
+        }
+        $this->load->view("admin/waste/list", $data);
+    }
+
+    public function cetak()
+    {
+        $post = $this->input->post();
+        $date = $post["tanggal"];
+        if ($date != null) {
+            $data['data_waste'] = $this->waste_model->getWasteByDate($date);
+        }else{
+            $data['data_waste'] = $this->waste_model->getAll();  
+        }
+        $this->load->view("admin/siswa/cetak4", $data);
+    }
+
 
     public function store_waste()
     {
@@ -29,9 +53,9 @@ class Waste extends CI_Controller
 
     public function update()
     {
-        $products=new Transaksi_model;
+        $products=new Waste_model;
         $products->update();
-        redirect(base_url('admin/siswa'));
+        redirect(base_url('admin/waste'));
     }
 
     public function edit($id = null)

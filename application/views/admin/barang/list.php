@@ -66,7 +66,7 @@
 										
 										<td style="text-align:center" width="250"> 
 											<a href=""
-											 class="btn btn-small btn-update" data-id ="<?= $barang->id ?>" data-kode ="<?= $barang->kode ?>" data-name ="<?= $barang->item_name ?>" data-pack ="<?= $barang->isi_pack ?>" data-kategori ="<?= $barang->id_kategori ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
+											 class="btn btn-small btn-update" data-id ="<?= $barang->id_barang ?>" data-kode ="<?= $barang->kode ?>" data-name ="<?= $barang->item_name ?>" data-pack ="<?= $barang->isi_pack ?>" data-kategori ="<?= $barang->id_kategori ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
 											
 											 <?php if($this->session->userdata('username') === 'manager' ) {?>
 											<a 
@@ -184,7 +184,7 @@
              
             </div>
             <div class="modal-footer">
-				<input type="hidden" name="id" class="id">
+				<input type="hidden" name="id_barang" class="id_barang">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit"  id="btn-submit2" class="btn btn-primary">Record</button>
             </div>
@@ -234,7 +234,7 @@
 	
 	 // Set data to Form Edit
 	 $('.item_name').val(name);
-	 $('.id').val(id);
+	 $('.id_barang').val(id);
 	 $('.kode').val(kode);
 	 $('.isi_pack').val(pack);
 	 $('.id_kategori').val(kategori);

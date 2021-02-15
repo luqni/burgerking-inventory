@@ -122,7 +122,7 @@ class Barang_model extends CI_Model
 
     public function update()
     {
-        $id =  $this->input->post('id');
+        $id =  $this->input->post('id_barang');
         $kode =  $this->input->post('kode');
         $item_name =  $this->input->post('item_name');
         $isi_pack =  $this->input->post('isi_pack');
@@ -134,7 +134,7 @@ class Barang_model extends CI_Model
             'id_kategori' => $this->input->post('id_kategori'),
         );
 
-        $this->db->where('id',$id);
+        $this->db->where('id_barang',$id);
         return $this->db->update('data_barang',$data);
 
     }

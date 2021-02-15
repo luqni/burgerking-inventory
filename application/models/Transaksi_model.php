@@ -72,7 +72,7 @@ class Transaksi_model extends CI_Model
         $isi_pack =  $this->input->post('isi_pack');
         $ea = $pack * $isi_pack;
         $data = array(
-            'id_barang' => $this->input->post('id_barang'),
+            'id_barang_tr' => $this->input->post('id_barang'),
             'pack' => $this->input->post('pack'),
             'ea' => $ea,
             'date' => date("Y-m-d"),
@@ -104,7 +104,7 @@ class Transaksi_model extends CI_Model
         $isi_pack =  $this->input->post('isi_pack');
         $ea = $pack * $isi_pack;
         $data = array(
-            'id_barang' => $this->input->post('id_barang'),
+            'id_barang_tr' => $this->input->post('id_barang'),
             'pack' => $this->input->post('pack'),
             'ea' => $ea,
             // 'date' => date("Y-m-d"),

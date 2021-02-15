@@ -95,10 +95,10 @@
 										<td style="text-align:center" width="250">
 											<?php if($barang->pack === null){ ?>
 											<a href=""
-											 class="btn btn-small text-danger btn-record" data-pack ="<?= $barang->isi_pack ?>"  data-id ="<?= $barang->id ?>"  data-name ="<?= $barang->item_name ?>"  data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i> Record</a>
+											 class="btn btn-small text-danger btn-record" data-pack ="<?= $barang->isi_pack ?>"  data-id ="<?= $barang->id_barang ?>"  data-name ="<?= $barang->item_name ?>"  data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i> Record</a>
 											 <?php }else{ ?>
 											<a href="<?php echo site_url('admin/siswa/edit/'.$barang->id_transaksi) ?>"
-											 class="btn btn-small btn-update" data-pack2 ="<?= $barang->isi_pack ?>" data-id2 ="<?= $barang->id ?>" data-id ="<?= $barang->id_transaksi ?>"  data-name ="<?= $barang->item_name ?>" data-cv ="<?= $barang->cv ?>"  data-pack ="<?= $barang->pack ?>" data-ea ="<?= $barang->ea ?>" data-stok ="<?= $barang->stok_op_name ?>" data-transfer ="<?= $barang->transfer ?>" data-endmonthly ="<?= $barang->endmonthly ?>" data-actual ="<?= $barang->actual ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
+											 class="btn btn-small btn-update" data-pack2 ="<?= $barang->isi_pack ?>" data-id2 ="<?= $barang->id_barang ?>" data-id ="<?= $barang->id_transaksi ?>"  data-name ="<?= $barang->item_name ?>" data-cv ="<?= $barang->cv ?>"  data-pack ="<?= $barang->pack ?>" data-ea ="<?= $barang->ea ?>" data-stok ="<?= $barang->stok_op_name ?>" data-transfer ="<?= $barang->transfer ?>" data-endmonthly ="<?= $barang->endmonthly ?>" data-actual ="<?= $barang->actual ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
 											
 											<?php } ?>
 											

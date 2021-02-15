@@ -57,7 +57,7 @@ class Barang_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('data_barang');
-        $this->db->join('data_transaksi', 'data_transaksi.id_barang = data_barang.id_barang', 'left');
+        $this->db->join('data_transaksi', 'data_transaksi.id_barang_tr = data_barang.id_barang', 'left');
         $query = $this->db->get();
         return $query->result();
     }
@@ -69,7 +69,7 @@ class Barang_model extends CI_Model
 
         $this->db->select('*');
         $this->db->from('data_barang');
-        $this->db->join('data_transaksi', 'data_transaksi.id_barang = data_barang.id_barang');
+        $this->db->join('data_transaksi', 'data_transaksi.id_barang_tr = data_barang.id_barang');
         $this->db->where('data_transaksi.date', $date);
         $query = $this->db->get();
         return $query->result();

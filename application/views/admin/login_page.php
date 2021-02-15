@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 text-center mt-5 mx-auto p-4">
-            <h1 class="h2">Login Admin</h1>
+            <!-- <h1 class="h2">Login Admin</h1> -->
             <div class="container">
                 <div class="row">
                     <div class="col">

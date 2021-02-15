@@ -132,7 +132,7 @@
              
                 <div class="form-group">
                     <label>Quantity</label>
-                    <input type="number" class="form-control item_name" name="qty" placeholder="Quantity">
+                    <input type="text" class="form-control item_name" name="qty" placeholder="Quantity">
                 </div>
 
 				<div class="form-group">
@@ -171,7 +171,7 @@
              
                 <div class="form-group">
                     <label>Quantity</label>
-                    <input type="number" class="form-control qty" name="qty" placeholder="Quantity">
+                    <input type="text" class="form-control qty" name="qty" placeholder="Quantity">
                 </div>
 
 				<div class="form-group">

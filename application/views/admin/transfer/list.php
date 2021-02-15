@@ -59,7 +59,7 @@
 								<thead class="thead-dark">
 									<tr>
 										<th style="text-align:center" rowspan="2">No</th>
-										<th style="text-align:center" rowspan="2">ID Cabang</th>
+										<!-- <th style="text-align:center" rowspan="2">ID Cabang</th> -->
 										<th style="text-align:center" rowspan="2">Nama Cabang</th>
 										<th style="text-align:center" rowspan="2">Item Name</th>
 										<th style="text-align:center" rowspan="2">Quantity</th>
@@ -73,9 +73,9 @@
 									 foreach ($data_transfer as $transfer): $no++?>
 									<tr>
 										<td style="text-align:center" width="50"> <?php echo $no ?> </td>
-										<td style="text-align:center" width="150">
+										<!-- <td style="text-align:center" width="150">
 											<?php echo $transfer->id_cabang ?>
-										</td>
+										</td> -->
 										<td style="text-align:center">
 											<?php echo $transfer->nama_cabang ?>
 										</td>

@@ -68,7 +68,10 @@
 											<a href=""
 											 class="btn btn-small btn-update" data-id ="<?= $barang->id ?>" data-kode ="<?= $barang->kode ?>" data-name ="<?= $barang->item_name ?>" data-pack ="<?= $barang->isi_pack ?>" data-kategori ="<?= $barang->id_kategori ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
 											
-										
+											 <?php if($this->session->userdata('username') === 'manager' ) {?>
+											<a 
+												href="<?php echo site_url('admin/barang/delete/'.$barang->id) ?>" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+											<?php } ?>
 										</td>
 									</tr>
 									<?php endforeach; ?>

@@ -29,9 +29,9 @@ class Cabang extends CI_Controller
 
     public function update()
     {
-        $products=new Transaksi_model;
+        $products=new Cabang_model;
         $products->update();
-        redirect(base_url('admin/siswa'));
+        redirect(base_url('admin/cabang'));
     }
 
     public function edit($id = null)
@@ -55,8 +55,8 @@ class Cabang extends CI_Controller
     {
         if (!isset($id)) show_404();
         
-        if ($this->siswa_model->delete($id)) {
-            redirect(site_url('admin/siswa'));
+        if ($this->cabang_model->delete($id)) {
+            redirect(site_url('admin/cabang'));
             $this->session->set_flashdata('Berhasil Di Hapus');
         }
     }

@@ -74,8 +74,8 @@ class Barang extends CI_Controller
     {
         if (!isset($id)) show_404();
         
-        if ($this->siswa_model->delete($id)) {
-            redirect(site_url('admin/siswa'));
+        if ($this->barang_model->delete($id)) {
+            redirect(site_url('admin/barang'));
             $this->session->set_flashdata('Berhasil Di Hapus');
         }
     }

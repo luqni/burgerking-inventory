@@ -48,26 +48,21 @@ class Cabang_model extends CI_Model
 
     public function update()
     {
-        $post = $this->input->post();
-        $this->product_id = $post["id"];
-        $this->name = $post["name"];
-		$this->price = $post["price"];
-		
-		
-		if (!empty($_FILES["image"]["name"])) {
-            $this->image = $this->_uploadImage();
-        } else {
-            $this->image = $post["old_image"];
-		}
+        $id =  $this->input->post('id');
+        $nama_cabang =  $this->input->post('nama_cabang');
+        $data = array(
+            'nama_cabang' => $this->input->post('nama_cabang'),
+        );
 
-        $this->description = $post["description"];
-        $this->db->update($this->_table, $this, array('product_id' => $post['id']));
+        $this->db->where('id',$id);
+        return $this->db->update('cabang',$data);
+
     }
 
     public function delete($id)
     {
-		$this->_deleteImage($id);
-        return $this->db->delete($this->_table, array("product_id" => $id));
+		// $this->_deleteImage($id);
+        return $this->db->delete($this->_table, array("id" => $id));
 	}
 	
 	private function _uploadImage()

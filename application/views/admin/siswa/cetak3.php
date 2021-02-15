@@ -20,7 +20,7 @@ break;
 }
 $pdf->Cell(27,3,'',0,1);
 
-$pdf->Cell(25,10,'ID Cabang',1,0, 'C');
+// $pdf->Cell(25,10,'ID Cabang',1,0, 'C');
 $pdf->Cell(45,10,'Nama Cabang',1,0,'C');
 $pdf->Cell(35,10,'Item Name',1,0, 'C');
 $pdf->Cell(35,10,'Quantity',1,0, 'C');
@@ -28,7 +28,7 @@ $pdf->Cell(35,10,'Approved',1,1, 'C');
 
 
 foreach ($data_transfer as $transfer){
-    $pdf->Cell(25,6,$transfer->id_cabang,1,0, 'C');
+    // $pdf->Cell(25,6,$transfer->id_cabang,1,0, 'C');
     $pdf->Cell(45,6,$transfer->nama_cabang,1,0,'C');
     $pdf->Cell(35,6,$transfer->item_name,1,0, 'C');
     $pdf->Cell(35,6,$transfer->qty,1,0, 'C');

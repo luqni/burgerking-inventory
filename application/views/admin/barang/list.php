@@ -66,7 +66,7 @@
 										
 										<td style="text-align:center" width="250"> 
 											<a href=""
-											 class="btn btn-small btn-update"  data-toggle="modal" data-target="#addModal" ><i class="fas fa-edit"></i> Update</a>
+											 class="btn btn-small btn-update" data-id ="<?= $barang->id ?>" data-kode ="<?= $barang->kode ?>" data-name ="<?= $barang->item_name ?>" data-pack ="<?= $barang->isi_pack ?>" data-kategori ="<?= $barang->id_kategori ?>"  data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i> Update</a>
 											
 										
 										</td>
@@ -140,7 +140,56 @@
         </div>
     </form>
     <!-- End Modal Add Transaksi-->
+	
+	<!-- Modal Edit Transaksi-->
+    <form id="search_form" action="<?php echo base_url('admin/barang/update');?>" method="post">
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Data Barang</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
 
+				<div class="form-group">
+                    <label>Kode</label>
+                    <input type="text" id="kode" class="form-control kode" name="kode" placeholder="Kode Barang">
+                </div>
+             
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input type="text" class="form-control item_name" name="item_name" placeholder="Nama Barang">
+                </div>
+
+				<div class="form-group">
+                    <label>Isi Pack</label>
+                    <input type="number" class="form-control isi_pack" name="isi_pack" placeholder="Isi Pack">
+                </div>
+
+				<div class="form-group">
+                    <label>Kategori</label>
+                    <select name="id_kategori" class="form-control id_kategori">
+                        <option value="">-Select-</option>
+                        <?php foreach($kategori as $row):?>
+                        <option value="<?= $row->id;?>"><?= $row->nama;?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+             
+            </div>
+            <div class="modal-footer">
+				<input type="hidden" name="id" class="id">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit"  id="btn-submit2" class="btn btn-primary">Record</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </form>
+    <!-- End Modal Edit Transaksi-->
 	
 	<?php $this->load->view("admin/_partials/scrolltop.php") ?>
 	<?php $this->load->view("admin/_partials/modal.php") ?>
@@ -174,27 +223,18 @@
 	 $('.btn-update').on('click',function(){
 	 // get data from button edit
 	 const id = $(this).data('id');
-	 const id2 = $(this).data('id2');
 	 const name = $(this).data('name');
-	 const cv = $(this).data('cv');
+	 const kode = $(this).data('kode');
 	 const pack = $(this).data('pack');
-	 const ea = $(this).data('ea');
-	 const stok = $(this).data('stok');
-	 const transfer = $(this).data('transfer');
-	 const endmonthly = $(this).data('endmonthly');
-	 const actual = $(this).data('actual');
+	 const kategori = $(this).data('kategori');
+	 
 	
 	 // Set data to Form Edit
 	 $('.item_name').val(name);
-	 $('.id_transaksi').val(id);
-	 $('.id_barang').val(id2);
-	 $('.cv').val(cv);
-	 $('.pack').val(pack);
-	 $('.ea').val(ea);
-	 $('.stok-op-name').val(stok);
-	 $('.transfer').val(transfer);
-	 $('.endmonthly').val(endmonthly);
-	 $('.actual').val(actual);
+	 $('.id').val(id);
+	 $('.kode').val(kode);
+	 $('.isi_pack').val(pack);
+	 $('.id_kategori').val(kategori);
 	 // Call Modal Edit
 	
  	});

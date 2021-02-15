@@ -48,9 +48,9 @@ class Barang extends CI_Controller
 
     public function update()
     {
-        $products=new Transaksi_model;
+        $products=new Barang_model;
         $products->update();
-        redirect(base_url('admin/siswa'));
+        redirect(base_url('admin/barang'));
     }
 
     public function edit($id = null)

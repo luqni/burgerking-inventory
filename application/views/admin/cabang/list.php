@@ -36,7 +36,7 @@
 								<thead class="thead-dark">
 									<tr>
 										<th style="text-align:center" rowspan="2">No</th>
-										<th style="text-align:center" rowspan="2">ID Cabang</th>
+										<!-- <th style="text-align:center" rowspan="2">ID Cabang</th> -->
 										<th style="text-align:center" rowspan="2">Nama Cabang</th>
 										<th style="text-align:center" rowspan="2" >Action</th>
 									</tr>
@@ -47,9 +47,9 @@
 									 foreach ($data_cabang as $cabang): $no++?>
 									<tr>
 										<td style="text-align:center" width="50"> <?php echo $no ?> </td>
-										<td style="text-align:center" width="150">
+										<!-- <td style="text-align:center" width="150">
 											<?php echo $cabang->id ?>
-										</td>
+										</td> -->
 										<td style="text-align:center">
 											<?php echo $cabang->nama_cabang ?>
 										</td>

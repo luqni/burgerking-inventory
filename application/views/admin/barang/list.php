@@ -70,7 +70,7 @@
 											
 											 <?php if($this->session->userdata('username') === 'manager' ) {?>
 											<a 
-												href="<?php echo site_url('admin/barang/delete/'.$barang->id) ?>" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+												href="<?php echo site_url('admin/barang/delete/'.$barang->id_barang) ?>" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
 											<?php } ?>
 										</td>
 									</tr>

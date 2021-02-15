@@ -57,7 +57,7 @@ class Barang_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('data_barang');
-        $this->db->join('data_transaksi', 'data_transaksi.id_barang = data_barang.id', 'left');
+        $this->db->join('data_transaksi', 'data_transaksi.id_barang = data_barang.id_barang', 'left');
         $query = $this->db->get();
         return $query->result();
     }
@@ -69,7 +69,7 @@ class Barang_model extends CI_Model
 
         $this->db->select('*');
         $this->db->from('data_barang');
-        $this->db->join('data_transaksi', 'data_transaksi.id_barang = data_barang.id');
+        $this->db->join('data_transaksi', 'data_transaksi.id_barang = data_barang.id_barang');
         $this->db->where('data_transaksi.date', $date);
         $query = $this->db->get();
         return $query->result();
@@ -79,7 +79,7 @@ class Barang_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('data_barang');
-        $this->db->join('data_transaksi_monthly', 'data_transaksi_monthly.id_barang = data_barang.id', 'left');
+        $this->db->join('data_transaksi_monthly', 'data_transaksi_monthly.id_barang = data_barang.id_barang', 'left');
         $query = $this->db->get();
         return $query->result();
     }
@@ -91,7 +91,7 @@ class Barang_model extends CI_Model
 
         $this->db->select('*');
         $this->db->from('data_barang');
-        $this->db->join('data_transaksi_monthly', 'data_transaksi_monthly.id_barang = data_barang.id');
+        $this->db->join('data_transaksi_monthly', 'data_transaksi_monthly.id_barang = data_barang.id_barang');
         $this->db->where('data_transaksi_monthly.date', $date);
         $query = $this->db->get();
         return $query->result();
@@ -142,7 +142,7 @@ class Barang_model extends CI_Model
     public function delete($id)
     {
 		
-        return $this->db->delete($this->_table, array("id" => $id));
+        return $this->db->delete($this->_table, array("id_barang" => $id));
 	}
 	
 	private function _uploadImage()

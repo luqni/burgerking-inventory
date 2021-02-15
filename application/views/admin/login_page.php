@@ -16,9 +16,20 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 text-center mt-5 mx-auto p-4">
-                <h1 class="h2">Login Admin</h1>
-                <img style="display: block;margin-top: 20px;margin-left: auto;margin-right: auto;width: 25%;" src="<?php echo base_url('assets/img/burger-king.png') ?>" rel="stylesheet" alt="logo" width="90" height="100">
-                <p class="lead">BELLAGIO</p>
+            <h1 class="h2">Login Admin</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <img style="display: block;margin-top: 20px;margin-left: 55%;width: 50%;" src="<?php echo base_url('assets/img/burger-king.png') ?>" rel="stylesheet" alt="logo" width="90" height="100">
+                    </div>
+                    <div class="col">
+                        <h1 style="display: block;margin-top: 45px;margin-right: 55%;" class="h2" >BELLAGIO</h1>
+                    </div> 
+                </div>
+                </div>
+                
+                
+                
             </div>
         </div>
         <div class="row">
